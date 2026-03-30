@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marisfrolg Campus — Zaha Hadid Architects</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --white: #ffffff;
+    --off-white: #f8f7f5;
+    --light: #eeede9;
+    --mid: #c8c6c0;
+    --dark: #2a2926;
+    --ink: #1a1917;
+    --accent: #3a3835;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', sans-serif;
+    --gold: #b8a898;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--light);
+    transition: padding 0.3s;
+  }
+  nav.scrolled { padding: 14px 48px; }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    background: var(--ink);
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('02_ZHA_Marisfrolg-Showroom_Photo-by-Zhu-Yumeng-2006x1080.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.7;
+    transform: scale(1.04);
+    animation: heroReveal 2s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+
+  @keyframes heroReveal {
+    from { transform: scale(1.08); opacity: 0; }
+    to   { transform: scale(1.04); opacity: 0.7; }
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,25,23,0.85) 0%, rgba(26,25,23,0.1) 60%);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 48px 72px;
+    max-width: 720px;
+    animation: heroText 1.6s cubic-bezier(0.16,1,0.3,1) 0.4s both;
+  }
+
+  @keyframes heroText {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(48px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 1.0;
+    color: var(--white);
+    letter-spacing: -0.01em;
+    margin-bottom: 28px;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+
+  .hero-sub {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.7);
+    max-width: 480px;
+    margin-bottom: 40px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 40px;
+  }
+  .hero-meta-item { }
+  .hero-meta-item .label {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .hero-meta-item .value {
+    font-family: var(--serif);
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 300;
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 32px;
+    right: 48px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    animation: heroText 1.6s cubic-bezier(0.16,1,0.3,1) 0.8s both;
+  }
+  .scroll-line {
+    width: 40px;
+    height: 0.5px;
+    background: rgba(255,255,255,0.3);
+    position: relative;
+    overflow: hidden;
+  }
+  .scroll-line::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--gold);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  /* SECTIONS COMMON */
+  section { padding: 120px 48px; }
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 48px;
+  }
+  .section-title em { font-style: italic; }
+
+  /* ABOUT */
+  .about {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-left { }
+  .about-right {
+    padding-top: 60px;
+  }
+
+  .about-body {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: #4a4845;
+    margin-bottom: 24px;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--light);
+    border: 0.5px solid var(--light);
+    margin-top: 48px;
+  }
+  .stat-card {
+    background: var(--white);
+    padding: 28px 24px;
+  }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--mid);
+    letter-spacing: 0.06em;
+  }
+
+  .divider {
+    width: 40px;
+    height: 0.5px;
+    background: var(--gold);
+    margin: 40px 0;
+  }
+
+  /* PHOTO GALLERY */
+  .gallery {
+    background: var(--off-white);
+    padding: 120px 0;
+  }
+  .gallery-header {
+    padding: 0 48px;
+    margin-bottom: 56px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+  .gallery-intro {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #6a6865;
+    max-width: 380px;
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: auto;
+    gap: 3px;
+    padding: 0 48px;
+  }
+
+  .gallery-item {
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.4s;
+    filter: saturate(0.85);
+  }
+  .gallery-item:hover img { transform: scale(1.04); filter: saturate(1); }
+
+  .g1  { grid-column: 1/5; grid-row: 1; aspect-ratio: 0.75; }
+  .g2  { grid-column: 5/9; grid-row: 1; aspect-ratio: 1.85; }
+  .g3  { grid-column: 9/13; grid-row: 1; aspect-ratio: 0.75; }
+  .g4  { grid-column: 1/5; grid-row: 2; aspect-ratio: 0.75; }
+  .g5  { grid-column: 5/8; grid-row: 2; aspect-ratio: 0.75; }
+  .g6  { grid-column: 8/13; grid-row: 2; aspect-ratio: 1.5; }
+  .g7  { grid-column: 1/5; grid-row: 3; aspect-ratio: 0.75; }
+  .g8  { grid-column: 5/9; grid-row: 3; aspect-ratio: 1.5; }
+  .g9  { grid-column: 9/13; grid-row: 3; aspect-ratio: 0.75; }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(26,25,23,0.95);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 88vh;
+    object-fit: contain;
+    cursor: default;
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 28px; right: 32px;
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: 0.5px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+  .lightbox-nav:hover { border-color: rgba(255,255,255,0.6); color: white; }
+  .lb-prev { left: 24px; }
+  .lb-next { right: 24px; }
+
+  /* CAMPUS MAP */
+  .campus-map {
+    background: var(--ink);
+    color: var(--white);
+    padding: 120px 48px;
+  }
+  .campus-map .section-title { color: var(--white); }
+
+  .map-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .map-container {
+    position: relative;
+    background: #151413;
+    border: 0.5px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+  }
+
+  .map-container img {
+    width: 100%;
+    display: block;
+    opacity: 0.85;
+  }
+
+  .map-legend {
+    padding-top: 20px;
+  }
+
+  .legend-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 28px;
+    letter-spacing: 0.02em;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.07);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .legend-item:hover { background: rgba(255,255,255,0.03); }
+
+  .legend-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--gold);
+    min-width: 22px;
+    margin-top: 1px;
+  }
+  .legend-name {
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+  }
+
+  /* FLOOR PLAN */
+  .floor-plan {
+    background: var(--white);
+  }
+  .plan-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .plan-img-wrap {
+    position: relative;
+    background: var(--off-white);
+    border: 0.5px solid var(--light);
+    padding: 32px;
+  }
+  .plan-img-wrap img {
+    width: 100%;
+    display: block;
+  }
+  .plan-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--off-white);
+    padding: 6px 10px;
+  }
+
+  .plan-legend {
+    padding-top: 24px;
+    columns: 2;
+    column-gap: 24px;
+  }
+  .plan-item {
+    break-inside: avoid;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--light);
+  }
+  .plan-item-num {
+    font-family: var(--serif);
+    font-size: 13px;
+    color: var(--gold);
+    min-width: 20px;
+    flex-shrink: 0;
+  }
+  .plan-item-name {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+  }
+  .plan-item-cn {
+    font-size: 10px;
+    color: var(--mid);
+    display: block;
+    margin-top: 2px;
+  }
+
+  /* DESIGN PHILOSOPHY */
+  .philosophy {
+    background: var(--off-white);
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 100px;
+    align-items: start;
+  }
+  .philosophy-image {
+    position: sticky;
+    top: 100px;
+  }
+  .philosophy-image img {
+    width: 100%;
+    display: block;
+    filter: saturate(0.8);
+  }
+  .philosophy-img-caption {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-top: 14px;
+    text-align: right;
+  }
+
+  .philosophy-content { padding-top: 10px; }
+  .philosophy-block {
+    margin-bottom: 56px;
+  }
+  .philosophy-block-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+  .philosophy-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.95;
+    color: #5a5855;
+  }
+
+  .pullquote {
+    border-left: 1.5px solid var(--gold);
+    padding: 4px 0 4px 28px;
+    margin: 40px 0;
+  }
+  .pullquote p {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+
+  /* FURNITURE & MATERIALS */
+  .furniture {
+    background: var(--white);
+  }
+
+  .furniture-intro {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: #5a5855;
+    max-width: 600px;
+    margin-bottom: 64px;
+  }
+
+  .materials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--light);
+    border: 0.5px solid var(--light);
+    margin-bottom: 64px;
+  }
+
+  .material-card {
+    background: var(--white);
+    padding: 32px 28px;
+    transition: background 0.2s;
+  }
+  .material-card:hover { background: var(--off-white); }
+
+  .material-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 20px;
+    opacity: 0.4;
+  }
+
+  .material-name {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .material-desc {
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--mid);
+  }
+
+  /* Furniture table */
+  .furniture-table-wrap {
+    border: 0.5px solid var(--light);
+    overflow: hidden;
+  }
+  .furniture-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .furniture-table thead th {
+    text-align: left;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mid);
+    padding: 16px 20px;
+    background: var(--off-white);
+    border-bottom: 0.5px solid var(--light);
+    font-weight: 400;
+  }
+  .furniture-table tbody tr {
+    border-bottom: 0.5px solid var(--light);
+    transition: background 0.15s;
+  }
+  .furniture-table tbody tr:hover { background: var(--off-white); }
+  .furniture-table tbody tr:last-child { border-bottom: none; }
+  .furniture-table tbody td {
+    padding: 14px 20px;
+    color: var(--accent);
+    vertical-align: top;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  .furniture-table tbody td:first-child {
+    font-family: var(--serif);
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    background: var(--off-white);
+    border: 0.5px solid var(--light);
+    color: var(--mid);
+    margin-right: 4px;
+    margin-bottom: 2px;
+  }
+  .tag.recycled {
+    background: #f0ede8;
+    border-color: #d4c9bc;
+    color: #8a7d6e;
+  }
+
+  /* MODEL */
+  .model-section {
+    background: var(--light);
+    padding: 120px 48px;
+  }
+  .model-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .model-img {
+    width: 100%;
+    display: block;
+    filter: saturate(0.7);
+  }
+  .model-text { }
+  .model-body {
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: #5a5855;
+  }
+
+  /* ARCHITECT CREDITS */
+  .credits {
+    background: var(--ink);
+    padding: 120px 48px;
+  }
+  .credits .section-label { color: var(--gold); }
+  .credits .section-title { color: var(--white); }
+
+  .credits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .credit-block {
+    background: var(--ink);
+    padding: 32px 28px;
+  }
+  .credit-role {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+  .credit-name {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .credit-detail {
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+  }
+
+  .credits-full {
+    margin-top: 64px;
+    padding-top: 48px;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+
+  .credit-col-title {
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .credit-col-item {
+    font-size: 11px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 2;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #0e0d0c;
+    padding: 56px 48px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-top: 0.5px solid rgba(255,255,255,0.05);
+  }
+  .footer-logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .footer-right {
+    text-align: right;
+  }
+  .footer-copy {
+    font-size: 10px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.1em;
+    line-height: 2;
+  }
+
+  /* REVEAL animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.32s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    .hero-content { padding: 0 24px 56px; }
+    .about, .plan-layout, .map-layout, .philosophy,
+    .model-content, .credits-grid { grid-template-columns: 1fr; gap: 40px; }
+    .gallery-grid { display: flex; flex-direction: column; }
+    .gallery-item { aspect-ratio: 16/9 !important; }
+    .materials-grid { grid-template-columns: 1fr; }
+    .credits-full { grid-template-columns: 1fr; gap: 32px; }
+    footer { flex-direction: column; gap: 24px; }
+    .footer-right { text-align: left; }
+    .plan-legend { columns: 1; }
+    .scroll-cue { display: none; }
+    .gallery-header { flex-direction: column; gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <a href="#" class="nav-logo">Marisfrolg <span>·</span> Campus</a>
+  <ul class="nav-links">
+    <li><a href="#about">Overview</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#campus-map">Campus</a></li>
+    <li><a href="#floor-plan">Plans</a></li>
+    <li><a href="#philosophy">Design</a></li>
+    <li><a href="#furniture">Materials</a></li>
+    <li><a href="#credits">Credits</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Shenzhen, China &nbsp;·&nbsp; 2023–2024</p>
+    <h1 class="hero-title">The Marisfrolg<br><em>Showroom</em></h1>
+    <p class="hero-sub">A 2,900 m² interior by Zaha Hadid Architects — where parametric architecture, fashion, and living space converge into a unified spatial experience.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="label">Architect</div>
+        <div class="value">Zaha Hadid Architects</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Area</div>
+        <div class="value">2,900 m²</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="label">Status</div>
+        <div class="value">Complete</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left reveal">
+    <p class="section-label">Project Overview</p>
+    <h2 class="section-title">Where fashion<br>meets <em>architecture</em></h2>
+    <p class="about-body">Located at the heart of Marisfrolg Fashion Group's Shenzhen campus, the Showroom interiors by Zaha Hadid Architects are informed by the rich textiles, timeless design, and precision tailoring embodied within the group's nine unique labels.</p>
+    <p class="about-body">Featuring the main flagship store, a pop-up store for temporary exhibitions and events, a homeware gallery for décor and furniture, as well as a café and an outdoor courtyard, ZHA's interiors convey the ethos of Marisfrolg's unique labels.</p>
+    <div class="divider"></div>
+    <p class="about-body">Echoing the headquarters' original 'butterfly-wing' structure, ZHA's showroom design embodies a unifying architectural language of dynamism, with distinct elements unique to each label creating a different spatial experience to reflect their individuality.</p>
+  </div>
+  <div class="about-right">
+    <div class="about-stats reveal reveal-delay-2">
+      <div class="stat-card">
+        <div class="stat-num">2,900</div>
+        <div class="stat-label">m² Interior Area</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">9</div>
+        <div class="stat-label">Unique Fashion Labels</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">400+</div>
+        <div class="stat-label">Stores Worldwide</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100</div>
+        <div class="stat-label">Cities Represented</div>
+      </div>
+    </div>
+    <p style="font-size:11px;color:var(--mid);margin-top:20px;font-weight:300;line-height:1.7;" class="reveal reveal-delay-3">Founded in 1993, Marisfrolg Fashion Group has grown to become one of China's leading fashion conglomerates, collaborating with innovative designers from around the world on collections that showcase unwavering commitment to quality and craftsmanship.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+  <div class="gallery-header reveal">
+    <div>
+      <p class="section-label">Photography</p>
+      <h2 class="section-title" style="margin-bottom:0">Interior <em>Views</em></h2>
+    </div>
+    <p class="gallery-intro">Photography by Zhu Yumeng and courtesy of Marisfrolg Fashion Group. Click any image to enlarge.</p>
+  </div>
+  <div class="gallery-grid reveal reveal-delay-1">
+    <div class="gallery-item g1" onclick="openLightbox(0)">
+      <img src="01_ZHA_Marisfrolg_Showroom_Photo-by-Zhu-Yumeng-767x1080.jpg" alt="Sculptural installation, entrance" loading="lazy">
+    </div>
+    <div class="gallery-item g2" onclick="openLightbox(1)">
+      <img src="02_ZHA_Marisfrolg-Showroom_Photo-by-Zhu-Yumeng-2006x1080.jpg" alt="Arch corridor, panoramic view" loading="lazy">
+    </div>
+    <div class="gallery-item g3" onclick="openLightbox(2)">
+      <img src="03_ZHA_Marisfrolg-Showroom_Photo-by-Zhu-Yumeng-05-825x1080.jpg" alt="Interior columns" loading="lazy">
+    </div>
+    <div class="gallery-item g4" onclick="openLightbox(3)">
+      <img src="04_ZHA_Marisfrolg-Showroom_Photo-Courtesy-Marisfrolg-720x1080.jpg" alt="Showroom with garments" loading="lazy">
+    </div>
+    <div class="gallery-item g5" onclick="openLightbox(4)">
+      <img src="05_ZHA_Marisfrolg-Showroom_Photo-Courtesy-Marisfrolg-720x1080.jpg" alt="Display shelving detail" loading="lazy">
+    </div>
+    <div class="gallery-item g6" onclick="openLightbox(5)">
+      <img src="06_ZHA_Marisfrolg-Showroom_Photo-Courtesy-Marisfrolg-1-1620x1080.jpg" alt="AUM brand space" loading="lazy">
+    </div>
+    <div class="gallery-item g7" onclick="openLightbox(6)">
+      <img src="07_ZHA_Marisfrolg-Showroom_Photo-Courtesy-Marisfrolg-720x1080.jpg" alt="Multi-brand floor view" loading="lazy">
+    </div>
+    <div class="gallery-item g8" onclick="openLightbox(7)">
+      <img src="08_ZHA_Marisfrolg-Showroom_Photo-Courtesy-Marisfrolg-1620x1080.jpg" alt="Open showroom floor" loading="lazy">
+    </div>
+    <div class="gallery-item g9" onclick="openLightbox(8)">
+      <img src="09_ZHA_Marisfrolg-Showroom_Photo-by-Zhu-Yumeng-1901x1080.jpg" alt="Corridor of forms" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightboxDirect()">Close ✕</button>
+  <button class="lightbox-nav lb-prev" onclick="lbNav(-1, event)">&#8592;</button>
+  <img id="lb-img" src="" alt="">
+  <button class="lightbox-nav lb-next" onclick="lbNav(1, event)">&#8594;</button>
+</div>
+
+<!-- CAMPUS MAP -->
+<section class="campus-map" id="campus-map">
+  <p class="section-label reveal">Campus Planning</p>
+  <h2 class="section-title reveal">Campus <em>Overview</em></h2>
+  <div class="map-layout">
+    <div class="map-container reveal">
+      <img src="Campus_Top_View.pdf" alt="Campus top view aerial" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+      <div style="display:none;width:100%;aspect-ratio:4/3;align-items:center;justify-content:center;background:#1a1917;flex-direction:column;gap:12px;">
+        <div style="font-family:var(--serif);font-size:18px;color:rgba(255,255,255,0.3);font-weight:300;">Campus Top View</div>
+        <div style="font-size:11px;color:rgba(255,255,255,0.2);letter-spacing:0.12em;text-transform:uppercase;">Aerial Satellite Render</div>
+      </div>
+      <img src="Weixin_Screenshot_20260331000222.png" alt="Campus top view aerial" style="width:100%;display:block;opacity:0.85;" loading="lazy" onerror="this.style.display='none'">
+    </div>
+    <div class="map-legend reveal reveal-delay-2">
+      <h3 class="legend-title">Tour Guide</h3>
+      <div class="legend-item"><span class="legend-num">①</span><span class="legend-name">Central Tower<br><small style="opacity:0.5">Main headquarters building</small></span></div>
+      <div class="legend-item"><span class="legend-num">②</span><span class="legend-name">Exhibition Building</span></div>
+      <div class="legend-item"><span class="legend-num">③</span><span class="legend-name">Office</span></div>
+      <div class="legend-item"><span class="legend-num">④</span><span class="legend-name">Pop-up Shop / Café / Gallery by ZHA</span></div>
+      <div class="legend-item"><span class="legend-num">⑤</span><span class="legend-name">Collection Shop by ZHA</span></div>
+      <div class="legend-item"><span class="legend-num">⑥</span><span class="legend-name">Solarium</span></div>
+      <div class="legend-item"><span class="legend-num">⑦</span><span class="legend-name">Interior Atrium</span></div>
+      <div class="legend-item"><span class="legend-num">⑧</span><span class="legend-name">Research and Development Center</span></div>
+      <div class="legend-item"><span class="legend-num">⑨</span><span class="legend-name">Fashion Show Lobby and Office</span></div>
+      <div class="legend-item"><span class="legend-num">⑩</span><span class="legend-name">Pond</span></div>
+
+      <div style="margin-top:32px;padding-top:24px;border-top:0.5px solid rgba(255,255,255,0.08);">
+        <div style="font-size:9px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Route Legend</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:24px;height:2px;background:#ff5af7;border-radius:1px;"></div>
+            <span style="font-size:11px;color:rgba(255,255,255,0.5);">Campus Tour Route</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:24px;height:2px;background:#ff8c42;border-radius:1px;"></div>
+            <span style="font-size:11px;color:rgba(255,255,255,0.5);">Showroom Tour Route</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="width:24px;height:2px;background:#ff5af7;border-radius:1px;border-style:dashed;"></div>
+            <span style="font-size:11px;color:rgba(255,255,255,0.5);">Design Scope Boundary</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLOOR PLAN -->
+<section class="floor-plan" id="floor-plan">
+  <p class="section-label reveal">Spatial Organisation</p>
+  <h2 class="section-title reveal">Showroom <em>Floor Plan</em></h2>
+  <div class="plan-layout">
+    <div class="plan-img-wrap reveal">
+      <div class="plan-tag">Main Space Floor Plan</div>
+      <img src="Showroom_Plan.pdf" alt="Showroom floor plan" onerror="this.outerHTML='<div style=\'background:var(--off-white);border:0.5px solid var(--light);padding:48px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;\'><span style=\'font-family:var(--serif);font-size:18px;color:var(--mid);\'>[Floor Plan Drawing]</span><span style=\'font-size:11px;color:var(--mid);letter-spacing:0.1em;text-transform:uppercase;margin-top:4px;\'>PDF Viewer Required</span></div>'">
+    </div>
+    <div class="reveal reveal-delay-2">
+      <h3 style="font-family:var(--serif);font-size:20px;font-weight:300;color:var(--ink);margin-bottom:8px;">Space Programme</h3>
+      <p style="font-size:12px;font-weight:300;color:var(--mid);margin-bottom:28px;">20 distinct zones within 2,900 m² — each calibrated to the needs of Marisfrolg's diverse brand portfolio.</p>
+      <div class="plan-legend">
+        <div class="plan-item">
+          <span class="plan-item-num">1</span>
+          <span class="plan-item-name">Outdoor Courtyard<span class="plan-item-cn">室外庭院</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">2</span>
+          <span class="plan-item-name">Public Display / Art Installation<span class="plan-item-cn">公共展示/艺术展示</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">3</span>
+          <span class="plan-item-name">Retail<span class="plan-item-cn">品牌售卖</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">4</span>
+          <span class="plan-item-name">Lounge<span class="plan-item-cn">休息区</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">5</span>
+          <span class="plan-item-name">Cashier<span class="plan-item-cn">收银台</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">6</span>
+          <span class="plan-item-name">Storage<span class="plan-item-cn">储藏间</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">7</span>
+          <span class="plan-item-name">Twin Fitting Room<span class="plan-item-cn">双试衣间</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">8</span>
+          <span class="plan-item-name">Single Fitting Room<span class="plan-item-cn">独立试衣间</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">9</span>
+          <span class="plan-item-name">VIP Fitting Room<span class="plan-item-cn">VIP试衣间</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">10</span>
+          <span class="plan-item-name">Couture<span class="plan-item-cn">高级定制</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">11</span>
+          <span class="plan-item-name">Lift Lobby<span class="plan-item-cn">电梯厅</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">12</span>
+          <span class="plan-item-name">Pop-up Shop<span class="plan-item-cn">快闪店</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">13</span>
+          <span class="plan-item-name">Storage<span class="plan-item-cn">储藏间</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">14</span>
+          <span class="plan-item-name">Lady Restroom<span class="plan-item-cn">女卫生间</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">15</span>
+          <span class="plan-item-name">Gentleman Restroom<span class="plan-item-cn">男卫生间</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">16</span>
+          <span class="plan-item-name">Operation Area<span class="plan-item-cn">操作间</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">17</span>
+          <span class="plan-item-name">Café<span class="plan-item-cn">咖啡厅</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">18</span>
+          <span class="plan-item-name">Café Courtyard<span class="plan-item-cn">咖啡厅室外庭院</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">19</span>
+          <span class="plan-item-name">Home Furnishing Gallery<span class="plan-item-cn">生活家居馆</span></span>
+        </div>
+        <div class="plan-item">
+          <span class="plan-item-num">20</span>
+          <span class="plan-item-name">Home Furnishing Gallery Courtyard<span class="plan-item-cn">家居馆室外庭院</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGN PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="philosophy-image reveal">
+    <img src="01_ZHA_Marisfrolg_Showroom_Photo-by-Zhu-Yumeng-767x1080.jpg" alt="Sculptural installation" loading="lazy">
+    <p class="philosophy-img-caption">Photo: Zhu Yumeng</p>
+  </div>
+  <div class="philosophy-content">
+    <p class="section-label reveal">Design Description</p>
+    <h2 class="section-title reveal">A unified language<br>of <em>dynamism</em></h2>
+
+    <div class="philosophy-block reveal reveal-delay-1">
+      <h3 class="philosophy-block-title">The Butterfly-Wing Structure</h3>
+      <p class="philosophy-body">Echoing the headquarters' original 'butterfly-wing' structure, ZHA's showroom design embodies a unifying architectural language of dynamism. Each label within the showroom is given a distinct spatial identity, creating different experiential zones that reflect the individuality of each brand while remaining visually cohesive within the whole.</p>
+    </div>
+
+    <div class="pullquote reveal reveal-delay-1">
+      <p>"ZHA's interiors convey the ethos of Marisfrolg's unique labels — a material-rich gallery for the group."</p>
+    </div>
+
+    <div class="philosophy-block reveal reveal-delay-2">
+      <h3 class="philosophy-block-title">Material Ethos</h3>
+      <p class="philosophy-body">Crafted in recycled aggregates, the Marisfrolg Showroom becomes a material-rich gallery for the group. Its floors incorporate recycled crushed glass, quartz, sand, and stone, while its partition walls have been cast in glass reinforced gypsum (GRG) and fabricated from wax moulds that are recycled simply by melting and remilling the wax — an elegant solution that virtually eliminates mould waste.</p>
+    </div>
+
+    <div class="philosophy-block reveal reveal-delay-2">
+      <h3 class="philosophy-block-title">Spatial Narrative</h3>
+      <p class="philosophy-body">The flowing forms and organic geometries echo the fluidity of fabric in motion — each curve in the architecture mirrors the drape of a couture garment. The white surfaces function as both neutral backdrop and active architectural element, their topography catching light to create shadow volumes that shift throughout the day, animating the retail environment without relying on applied decoration.</p>
+    </div>
+
+    <div class="philosophy-block reveal reveal-delay-3">
+      <h3 class="philosophy-block-title">Furniture & Displays</h3>
+      <p class="philosophy-body">The showroom's ZHA-designed furniture and displays are composed in a variety of different recycled materials including glass, plastics, paper, fabrics, wood, and ceramics — each specifically designed to reflect and complement Marisfrolg's labels and products. Bespoke sculptural pieces, including the signature hanging installation, are designed as permanent art objects that anchor the spatial narrative.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MATERIALS & FURNITURE -->
+<section class="furniture" id="furniture">
+  <p class="section-label reveal">Specification</p>
+  <h2 class="section-title reveal">Materials <em>&amp; Furniture</em></h2>
+  <p class="furniture-intro reveal reveal-delay-1">The Marisfrolg Showroom prioritises a circular material approach — every surface, partition, and furnishing has been specified with recyclability and longevity in mind. ZHA's design team collaborated directly with specialist fabricators to develop new applications for recycled and sustainable materials.</p>
+
+  <div class="materials-grid reveal reveal-delay-2">
+    <div class="material-card">
+      <svg class="material-icon" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="14" stroke="currentColor" stroke-width="1"/>
+        <path d="M10 18 Q14 10 18 18 Q22 26 26 18" stroke="currentColor" stroke-width="1" fill="none"/>
+      </svg>
+      <div class="material-name">Recycled Aggregate Flooring</div>
+      <div class="material-desc">Floors incorporating recycled crushed glass, quartz, sand, and stone — creating a continuous terrazzo-like surface throughout the showroom.</div>
+    </div>
+    <div class="material-card">
+      <svg class="material-icon" viewBox="0 0 36 36" fill="none">
+        <rect x="4" y="8" width="28" height="20" rx="2" stroke="currentColor" stroke-width="1"/>
+        <path d="M4 16 H32" stroke="currentColor" stroke-width="0.5"/>
+        <path d="M4 24 H32" stroke="currentColor" stroke-width="0.5"/>
+      </svg>
+      <div class="material-name">Glass Reinforced Gypsum (GRG)</div>
+      <div class="material-desc">Partition walls cast in GRG using wax moulds that are fully recyclable by melting and remilling — eliminating mould waste from the construction process.</div>
+    </div>
+    <div class="material-card">
+      <svg class="material-icon" viewBox="0 0 36 36" fill="none">
+        <path d="M18 4 L32 28 L4 28 Z" stroke="currentColor" stroke-width="1" fill="none"/>
+        <path d="M18 12 L27 28 L9 28 Z" stroke="currentColor" stroke-width="0.5" fill="none"/>
+      </svg>
+      <div class="material-name">Bespoke Sculptural Furniture</div>
+      <div class="material-desc">ZHA-designed furniture and display units composed in recycled glass, plastics, paper, fabrics, wood, and ceramics — each calibrated to a specific label.</div>
+    </div>
+    <div class="material-card">
+      <svg class="material-icon" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="8" stroke="currentColor" stroke-width="1"/>
+        <circle cx="18" cy="18" r="4" stroke="currentColor" stroke-width="0.5"/>
+        <path d="M18 4 V10 M18 26 V32 M4 18 H10 M26 18 H32" stroke="currentColor" stroke-width="0.5"/>
+      </svg>
+      <div class="material-name">Polished White Resin Surfaces</div>
+      <div class="material-desc">Smooth white resin applied to walls, plinths, and display forms — providing a seamless, jointless surface that unifies the spatial language across all nine brand zones.</div>
+    </div>
+    <div class="material-card">
+      <svg class="material-icon" viewBox="0 0 36 36" fill="none">
+        <rect x="6" y="6" width="24" height="24" rx="3" stroke="currentColor" stroke-width="1"/>
+        <path d="M6 18 H30 M18 6 V30" stroke="currentColor" stroke-width="0.5"/>
+      </svg>
+      <div class="material-name">Full-Height Glass Partitions</div>
+      <div class="material-desc">Frameless glass panels used at key spatial transitions — maximising visual connectivity between zones while maintaining acoustic separation for VIP areas.</div>
+    </div>
+    <div class="material-card">
+      <svg class="material-icon" viewBox="0 0 36 36" fill="none">
+        <path d="M8 28 Q18 4 28 28" stroke="currentColor" stroke-width="1" fill="none"/>
+        <path d="M12 28 Q18 10 24 28" stroke="currentColor" stroke-width="0.5" fill="none"/>
+      </svg>
+      <div class="material-name">Textured Stone Paving</div>
+      <div class="material-desc">Herringbone-pattern stone paving used in transitional and entrance zones — referencing traditional craftsmanship while anchoring the contemporary interior language.</div>
+    </div>
+  </div>
+
+  <h3 class="reveal" style="font-family:var(--serif);font-size:26px;font-weight:300;color:var(--ink);margin-bottom:28px;">Furniture <em>Schedule</em></h3>
+  <div class="furniture-table-wrap reveal reveal-delay-1">
+    <table class="furniture-table">
+      <thead>
+        <tr>
+          <th style="width:22%">Item</th>
+          <th style="width:16%">Location</th>
+          <th style="width:20%">Material / Finish</th>
+          <th style="width:14%">Supplier</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hanging Sculptural Installation</td>
+          <td>Entrance / Lobby</td>
+          <td>Brushed stainless steel</td>
+          <td>ZHA Fabrication</td>
+          <td><span class="tag">Bespoke</span> Signature ZHA art object; permanent fixture referencing butterfly-wing motif</td>
+        </tr>
+        <tr>
+          <td>Display Plinths</td>
+          <td>All retail zones</td>
+          <td>White GRG / resin coat</td>
+          <td>ZHA Fabrication</td>
+          <td><span class="tag recycled">Recycled</span> Cast from wax moulds; parametric curvature varies per brand zone</td>
+        </tr>
+        <tr>
+          <td>Clothing Rail System</td>
+          <td>All retail zones</td>
+          <td>Satin chrome steel</td>
+          <td>Custom</td>
+          <td><span class="tag">Bespoke</span> Wall-mounted and free-standing variants; integrated into GRG wall panels</td>
+        </tr>
+        <tr>
+          <td>Full-Length Mirror</td>
+          <td>Fitting rooms, retail floor</td>
+          <td>Arched clear float glass, frameless</td>
+          <td>Specialist glazier</td>
+          <td>Rounded-arch profile; free-standing weighted base</td>
+        </tr>
+        <tr>
+          <td>Seating — Lounge Bench</td>
+          <td>Lounge / Waiting area</td>
+          <td>White GRG shell, upholstered seat pad</td>
+          <td>ZHA Fabrication</td>
+          <td><span class="tag">Bespoke</span> Curved form integrated into wall landscape</td>
+        </tr>
+        <tr>
+          <td>Cashier Counter</td>
+          <td>Zone 5 — Cashier</td>
+          <td>White resin, integrated lighting</td>
+          <td>ZHA Fabrication</td>
+          <td><span class="tag">Bespoke</span> Backlit edge detail; wireless POS embedded flush</td>
+        </tr>
+        <tr>
+          <td>Café Tables &amp; Seating</td>
+          <td>Zone 17 — Café</td>
+          <td>Recycled composite top, metal frame</td>
+          <td>Local fabricator</td>
+          <td><span class="tag recycled">Recycled</span> Tabletop composed of recycled glass aggregate</td>
+        </tr>
+        <tr>
+          <td>Homeware Display Shelving</td>
+          <td>Zone 19 — Home Gallery</td>
+          <td>GRG / timber / ceramic components</td>
+          <td>ZHA Fabrication</td>
+          <td><span class="tag recycled">Recycled</span> Modular system; each shelf unit unique per product category</td>
+        </tr>
+        <tr>
+          <td>Sculptural Accent Chair</td>
+          <td>VIP Fitting, Couture</td>
+          <td>Polished aluminium shell, leather</td>
+          <td>ZHA x Marisfrolg</td>
+          <td><span class="tag">Bespoke</span> Organic loop form; limited edition, 6 units total</td>
+        </tr>
+        <tr>
+          <td>Fitting Room Bench</td>
+          <td>All fitting rooms</td>
+          <td>Upholstered GRG base</td>
+          <td>ZHA Fabrication</td>
+          <td>Integrated hook rail; fabric in brand-specific colourway per zone</td>
+        </tr>
+        <tr>
+          <td>Pop-up Display System</td>
+          <td>Zone 12 — Pop-up Shop</td>
+          <td>Demountable aluminium frame</td>
+          <td>Custom</td>
+          <td>Fully reconfigurable for temporary exhibitions; tool-free assembly</td>
+        </tr>
+        <tr>
+          <td>Outdoor Furniture</td>
+          <td>Courtyards (Zones 1, 18, 20)</td>
+          <td>Weather-resistant composite</td>
+          <td>External supplier</td>
+          <td><span class="tag recycled">Recycled</span> UV-stable recycled HDPE; coordinates with landscaping palette</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ARCHITECTURAL MODEL -->
+<section class="model-section" id="model">
+  <div class="model-content">
+    <div class="reveal">
+      <img src="10_ZHA_Marisfrolg-Showroom_Model-Photo-by-Zaha-Hadid-Architects-1620x1080.jpg" class="model-img" alt="Architectural model, ZHA" loading="lazy">
+    </div>
+    <div class="reveal reveal-delay-2">
+      <p class="section-label" style="color:var(--gold)">Physical Model</p>
+      <h2 class="section-title">Campus <em>Model</em></h2>
+      <p class="model-body">The Marisfrolg campus model, produced by Zaha Hadid Architects, reveals the full spatial ambition of the project — a masterplan of interlocking organic forms that respond to the existing butterfly-wing headquarters structure.</p>
+      <div class="divider" style="background:var(--gold)"></div>
+      <p class="model-body">Individual showroom pods are articulated as distinct elliptical forms, connected by a network of flowing pathways that guide visitors through the campus. The model demonstrates the careful integration of landscape, water features, and built form that defines the campus planning strategy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CREDITS -->
+<section class="credits" id="credits">
+  <p class="section-label reveal">Project Team</p>
+  <h2 class="section-title reveal">Architect <em>&amp; Credits</em></h2>
+
+  <div class="credits-grid reveal reveal-delay-1">
+    <div class="credit-block">
+      <div class="credit-role">Interior Design Architect</div>
+      <div class="credit-name">Zaha Hadid Architects</div>
+      <div class="credit-detail">London, United Kingdom<br>zaha-hadid.com</div>
+    </div>
+    <div class="credit-block">
+      <div class="credit-role">Client</div>
+      <div class="credit-name">Shenzhen Marisfrolg Fashion Co., Ltd.</div>
+      <div class="credit-detail">Shenzhen, China<br>Marisfrolg Fashion Group</div>
+    </div>
+    <div class="credit-block">
+      <div class="credit-role">Location</div>
+      <div class="credit-name">Shenzhen, China</div>
+      <div class="credit-detail">Marisfrolg Fashion Group Campus<br>Guangdong Province</div>
+    </div>
+    <div class="credit-block">
+      <div class="credit-role">Project Timeline</div>
+      <div class="credit-name">2023 – 2024</div>
+      <div class="credit-detail">Status: Complete<br>Interior Area: 2,900 m²</div>
+    </div>
+  </div>
+
+  <div class="credits-full reveal reveal-delay-2">
+    <div>
+      <div class="credit-col-title">Photography</div>
+      <div class="credit-col-item">Zhu Yumeng</div>
+      <div class="credit-col-item">Courtesy Marisfrolg Fashion Group</div>
+      <div class="credit-col-item">Model photography: Zaha Hadid Architects</div>
+    </div>
+    <div>
+      <div class="credit-col-title">Design Team</div>
+      <div class="credit-col-item">Zaha Hadid Architects</div>
+      <div class="credit-col-item">Interior Design &amp; Furniture</div>
+      <div class="credit-col-item">Campus Planning Integration</div>
+      <div class="credit-col-item">Bespoke Fabrication</div>
+    </div>
+    <div>
+      <div class="credit-col-title">Specialist Consultants</div>
+      <div class="credit-col-item">Structural — Local consultant</div>
+      <div class="credit-col-item">MEP — Local consultant</div>
+      <div class="credit-col-item">Lighting — Integrated within ZHA scope</div>
+      <div class="credit-col-item">GRG Fabrication — Specialist moulder</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Marisfrolg Campus</div>
+  <div class="footer-right">
+    <div class="footer-copy">Interior Design by Zaha Hadid Architects</div>
+    <div class="footer-copy">Shenzhen, China &nbsp;·&nbsp; 2023–2024</div>
+    <div class="footer-copy" style="margin-top:8px;font-size:9px;">© Marisfrolg Fashion Group. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Lightbox
+  const images = [
+    '01_ZHA_Marisfrolg_Showroom_Photo-by-Zhu-Yumeng-767x1080.jpg',
+    '02_ZHA_Marisfrolg-Showroom_Photo-by-Zhu-Yumeng-2006x1080.jpg',
+    '03_ZHA_Marisfrolg-Showroom_Photo-by-Zhu-Yumeng-05-825x1080.jpg',
+    '04_ZHA_Marisfrolg-Showroom_Photo-Courtesy-Marisfrolg-720x1080.jpg',
+    '05_ZHA_Marisfrolg-Showroom_Photo-Courtesy-Marisfrolg-720x1080.jpg',
+    '06_ZHA_Marisfrolg-Showroom_Photo-Courtesy-Marisfrolg-1-1620x1080.jpg',
+    '07_ZHA_Marisfrolg-Showroom_Photo-Courtesy-Marisfrolg-720x1080.jpg',
+    '08_ZHA_Marisfrolg-Showroom_Photo-Courtesy-Marisfrolg-1620x1080.jpg',
+    '09_ZHA_Marisfrolg-Showroom_Photo-by-Zhu-Yumeng-1901x1080.jpg',
+  ];
+  let current = 0;
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+
+  function openLightbox(i) {
+    current = i;
+    lbImg.src = images[i];
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightboxDirect() {
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function closeLightbox(e) {
+    if (e.target === lb) closeLightboxDirect();
+  }
+  function lbNav(dir, e) {
+    e.stopPropagation();
+    current = (current + dir + images.length) % images.length;
+    lbImg.src = images[current];
+  }
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'ArrowLeft') lbNav(-1, e);
+    if (e.key === 'ArrowRight') lbNav(1, e);
+    if (e.key === 'Escape') closeLightboxDirect();
+  });
+</script>
+</body>
+</html>
